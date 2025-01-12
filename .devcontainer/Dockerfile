@@ -19,6 +19,7 @@ RUN apt-get update && apt-get upgrade -y && \
     openjdk-17-jdk \
     android-sdk \
     nano \
+    make \
     wget \
     unzip \
     zip \
