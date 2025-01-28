@@ -7,6 +7,12 @@
 include makefiles/variables.mk
 include makefiles/flutter.mk
 
+#FIXME: should be moved to docker
+setup:
+	sudo chown -R $(shell whoami) $(FLUTTER_SDK_PATH)
+	sudo chmod -R u+rw $(FLUTTER_SDK_PATH)
+	sudo chown -R $(shell whoami) $(FLUTTER_SDK_PATH)/.git
+	sudo chmod -R u+rw $(FLUTTER_SDK_PATH)/.git
 
 build-mobile:
 	(cd ${FLUTTER_APP_PATH} && ${FLUTTER_PATH} build apk)

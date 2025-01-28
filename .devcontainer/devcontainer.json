@@ -3,11 +3,34 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "/usr/bin/bash",
+				"icon": "terminal-bash"
+			}
+		}
+	},
+    "extensions": [
+		"Dart-Code.flutter"
+	],
+    "mounts": [
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
+		"source=${localEnv:HOME}/.bashrc,target=/home/vscode/.bashrc,type=bind",
+		"source=/dev/,target=/dev/,type=bind",
+		"source=/etc/udev/rules.d/,target=/etc/udev/rules.d/,type=bind"
+	],
     "runArgs": [
         "--privileged",
+        "--security-opt=apparmor:unconfined",
         "-v",
         "/dev/bus/usb:/dev/bus/usb"
     ],
     "forwardPorts": [8081, 5037],
-    "remoteUser": "root"
+    "remoteEnv": {
+		"DISPLAY": "${localEnv:DISPLAY}",	// allow to run & use GUI applications
+		"SUDO": "sudo"
+	},
+    "remoteUser": "vscode"
 }

@@ -7,7 +7,8 @@
 SHELL := /bin/bash
 REPO_DIR := $(shell pwd)
 
-FLUTTER_PATH := /usr/lib/flutter/bin/flutter
+FLUTTER_SDK_PATH=/usr/lib/flutter
+FLUTTER_PATH := $(FLUTTER_SDK_PATH)/bin/flutter
 FLUTTER_APP_PATH := app/grocery_app/
 ANDROID_SDK_PATH := android_sdk
 TEST_DEVICE_ID ?= 34HDU19A31000473
